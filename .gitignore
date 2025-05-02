@@ -159,6 +159,7 @@ Icon
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 
+target/
 # Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
@@ -169,4 +170,3 @@ Temporary Items
 ### macOS Patch ###
 # iCloud generated files
 *.icloud
-

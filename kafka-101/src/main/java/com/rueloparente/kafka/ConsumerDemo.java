@@ -32,8 +32,8 @@ public class ConsumerDemo {
         log.info("Polling for records...");
         ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
 
-        for (ConsumerRecord<String, String> record : records) {
-            log.info("Key: " + record.key() + ", Value: " + record.value());
+        for (ConsumerRecord<String, String> consumerRecord : records) {
+            log.info("Key: " + consumerRecord.key() + ", Value: " + consumerRecord.value());
         }
 
     }

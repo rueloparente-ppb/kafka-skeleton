@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package com.rueloparente.kafkaskeleton.proto;
+
+option java_package = "com.rueloparente.kafkaskeleton.proto";
+option java_multiple_files = true; // Generates separate files for each message
+
+import "google/protobuf/timestamp.proto";
+
+// Represents the nested 'meta' object from the JSON
+message MetaData {
+  string uri = 1;
+  string request_id = 2;
+  string id = 3; // Renamed from meta.id to avoid confusion if flattened, unique within MetaData scope
+  google.protobuf.Timestamp dt = 4; // Represents the ISO 8601 timestamp
+  string domain = 5;
+  string stream = 6;
+  string topic = 7;
+  int32 partition = 8;
+  int64 offset = 9;
+}
+
+// Represents the main recent change event
+message RecentChange {
+
+  MetaData meta = 1;
+  int64 id = 2; // Top-level ID of the change event
+  string type = 3;
+  int32 namespace = 4;
+  string title = 5;
+  string title_url = 6;
+  string comment = 7;
+  google.protobuf.Timestamp timestamp = 8;
+  string user = 9;
+  bool bot = 10;
+  string notify_url = 11;
+  string server_url = 12;
+  string server_name = 13;
+  string server_script_path = 14;
+  string wiki = 15;
+  string parsedcomment = 16;
+}

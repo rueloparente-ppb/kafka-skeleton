@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.rueloparente</groupId>
+    <artifactId>wikimedia-recent-change-proto</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <properties>
+        <distribution.repository.releases>https://maven.pkg.github.com/rueloparente/wikimedia-recent-change-proto</distribution.repository.releases>
+        <project.scm.id>github</project.scm.id>
+    </properties>
+
+    <scm>
+        <url>scm:git:https://github.com/rueloparente/wikimedia-recent-change-proto.git</url>
+        <connection>scm:git:https://github.com/rueloparente/wikimedia-recent-change-proto.git</connection>
+        <developerConnection>scm:git:https://github.com/rueloparente/wikimedia-recent-change-proto.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Ruelo Parente Packages Repository</name>
+            <url>${distribution.repository.releases}</url>
+        </repository>
+    </distributionManagement>
+</project>
