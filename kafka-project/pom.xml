@@ -27,6 +27,7 @@
 
 	<modules>
 		<module>wikimedia-producer</module>
+		<module>wikimedia-consumer</module>
 	</modules>
 	<dependencies>
 		<dependency>

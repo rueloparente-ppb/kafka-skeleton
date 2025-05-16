@@ -47,7 +47,7 @@ public class KafkaProducerConfig {
         props.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, 5);
         props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true"); // Prevents duplicated messages
 
-        // Set "high throughput" producer
+        // These are "high throughput" producer settings
         props.put(ProducerConfig.LINGER_MS_CONFIG, "20");
         props.put(ProducerConfig.BATCH_SIZE_CONFIG, Integer.toString(32*1024));
         props.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");

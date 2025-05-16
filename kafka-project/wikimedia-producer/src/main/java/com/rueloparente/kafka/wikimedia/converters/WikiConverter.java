@@ -32,15 +32,6 @@ public class WikiConverter {
                     .setPartition(metaNode.path("partition").asInt(0))
                     .setOffset(metaNode.path("offset").asLong(0L));
 
-//            // Convert meta.dt (ISO 8601 string) to Protobuf Timestamp
-//            try {
-//                Timestamp metaDt = Timestamps.parse(metaNode.path("dt").asText(""));
-//                metaBuilder.setDt(metaDt);
-//            } catch (ParseException e) {
-//                log.warn("Could not parse meta.dt timestamp: {}", metaNode.path("dt").asText(), e);
-//                // Optionally set a default timestamp or leave it empty
-//                metaBuilder.setDt(Timestamp.newBuilder().build()); // Empty timestamp
-//            }
 
             // Build the main RecentChange object
             com.rueloparente.kafkaskeleton.proto.RecentChange.Builder builder = com.rueloparente.kafkaskeleton.proto.RecentChange.newBuilder()
@@ -60,13 +51,6 @@ public class WikiConverter {
                     .setWiki(rootNode.path("wiki").asText(""))
                     .setParsedcomment(rootNode.path("parsedcomment").asText(""));
 
-
-            long epochSeconds = rootNode.path("timestamp").asLong(0L);
-//            if (epochSeconds > 0) {
-//                builder.setTimestamp(Timestamp.fromSeconds(epochSeconds));
-//            } else {
-//                builder.setTimestamp(Timestamp.newBuilder().build());
-//            }
 
             return builder.build();
 

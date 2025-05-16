@@ -17,14 +17,6 @@ public class WikimediaRecentChangeSerializer implements Serializer<RecentChange>
         log.debug("Configuring WikimediaRecentChangeSerializer. Is key serializer: {}", isKey);
     }
 
-    /**
-     * Serializes the WikimediaRecentChange message into a byte array.
-     * Prepends the message with its length (Varint).
-     *
-     * @param topic The topic the record is being sent to (ignored)
-     * @param data  The WikimediaRecentChange message object to serialize. Can be null.
-     * @return Byte array representation of the message, or null if data is null.
-     */
     @Override
     public byte[] serialize(String topic, RecentChange data) {
         if (data == null) {
@@ -32,19 +24,14 @@ public class WikimediaRecentChangeSerializer implements Serializer<RecentChange>
             return null;
         }
 
-        // Using ByteArrayOutputStream is convenient but potentially less performant
-        // than pre-calculating size for high-throughput scenarios.
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         try {
-            // writeDelimitedTo writes the size of the message first (as a Varint)
-            // followed by the message itself. This is useful for consumers
-            // that need to know message boundaries.
+
             data.writeDelimitedTo(outputStream);
             byte[] bytes = outputStream.toByteArray();
             log.trace("Serialized WikimediaRecentChange to {} bytes", bytes.length);
             return bytes;
         } catch (Exception e) {
-            // Consider a more specific exception handling strategy if needed
             log.error("Error serializing WikimediaRecentChange data for topic {}: {}", topic, data.toString(), e);
             throw new RuntimeException("Error serializing Protobuf message", e);
         }
@@ -52,7 +39,6 @@ public class WikimediaRecentChangeSerializer implements Serializer<RecentChange>
 
     @Override
     public void close() {
-        // No resources to close
         log.debug("Closing WikimediaRecentChangeSerializer");
     }
 }

@@ -37,7 +37,6 @@ public class WikimediaEventHandler implements EventHandler {
     public void onMessage(String s, MessageEvent messageEvent) {
         RecentChange recentChange = wikiConverter.convert(messageEvent.getData());
 
-        //We could pass a key here
         kafkaTemplate.send(kafkaProperties.topic(), recentChange);
 
     }
